@@ -1,3 +1,106 @@
 .Main {
+  height: 100vh;
   border: 1px solid black;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+.Main #infobloc {
+  flex-grow: 1;
+}
+
+.Main #infobloc #lastAction {
+  border: 1px solid black;
+  background-color: cornflowerblue;
+  border-radius: 5px;
+}
+
+#chatPanel {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+  margin-top: 10px;
+  border: 1px solid lightslategray;
+}
+
+#chatPanel > div:first-of-type {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.Main #messageBox {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  width: 75%;
+  min-width: 50%;
+
+  white-space: pre-wrap;
+}
+
+.Main #chatInputTextarea {
+  width: 100%;
+  bottom: 0;
+  /* height: 30px; */
+  border: 1px solid lightslategray;
+}
+.Main #chatInputTextarea form {
+  display: flex;
+  height: fit-content;
+}
+
+.Main #chatInputTextarea #messageTextArea {
+  flex-grow: 1;
+  height: 100%;
+  padding: 0;
+  border: none;
+  padding-left: 5px;
+}
+
+.Main #messageBox .myMessage {
+  background-color: snow;
+  bottom: 0;
+}
+.Main #messageBox .myMessage > span:first-of-type {
+  font-weight: bold;
+  color: lightseagreen;
+}
+
+.Main #messageBox .message {
+  display: flex;
+  border-bottom: 1px solid lightsteelblue;
+}
+
+.Main #messageBox .message div.username {
+  margin-right: 10px;
+  margin-top: auto;
+  margin-bottom: auto;
+  padding: 5px;
+}
+
+.Main #messageBox .message div.messageText {
+  flex-grow: 1;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.Main #messageBox .normalMessage {
+  background-color: paleturquoise;
+}
+.Main #messageBox .normalMessage .username {
+  color: mediumpurple;
+}
+
+.Main #messageBox .serverMessage {
+  background-color: teal;
+  color: whitesmoke;
+}
+.Main #messageBox .serverMessage .username {
+  color: chartreuse;
+}
+
+.Main #connectedUsers {
+  border-left: 1px solid lightslategray;
+  flex-grow: 1;
 }
