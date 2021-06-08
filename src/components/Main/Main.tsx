@@ -3,6 +3,10 @@ import "./Main.css";
 
 import { io, Socket } from "socket.io-client";
 import { v4 as uuidv4 } from "uuid";
+import { ChatMessage } from "../Message/chat-message";
+import Message from "../Message/Message";
+import { ChatUser } from "../User/chat-user";
+import UserList from "../UserList/UserList";
 
 enum ReadyState {
   UNINSTANTIATED = -1,
@@ -16,16 +20,6 @@ type Props = {
   name: string;
 };
 
-interface ChatMessage {
-  author: string;
-  date: Date;
-  text: string;
-}
-
-interface ChatUser {
-  username: string;
-}
-
 type IdentifyMessage = {
   username: string;
   date: Date;
@@ -37,7 +31,7 @@ type ChatState = {
   messageHistory: ChatMessage[];
   lastAction: string;
   currentMessageText?: string;
-  user?: { name: string };
+  user: { name: string };
   connectedUsers?: ChatUser[];
 };
 
@@ -47,9 +41,10 @@ export default class Main extends React.Component<Props, ChatState> {
       messageHistory: [],
       readyState: ReadyState.UNINSTANTIATED,
       lastAction: "Connecting WebSocket...",
+      user: { name: username },
     } as ChatState);
 
-    const socket = io("http://localhost:3001");
+    const socket = io("http://localhost:3010");
 
     this.setState({ socket, readyState: ReadyState.OPEN });
 
@@ -94,7 +89,7 @@ export default class Main extends React.Component<Props, ChatState> {
     this.setState({ user: { name: data.username } });
   }
 
-  // After the component did mount, set state on each 1 second tick.
+  // After the component did mount
   componentDidMount() {
     const username = window.prompt("Please state your name:");
     const socket = this.initSocket(!!username ? username : uuidv4());
@@ -201,39 +196,15 @@ export default class Main extends React.Component<Props, ChatState> {
           <div>
             <div id="messageBox">
               {this.state?.messageHistory?.map((message, idx) => (
-                <div
+                <Message
+                  username={this.state?.user.name}
+                  message={message}
                   key={idx}
-                  className={
-                    message.author === this.state?.user?.name
-                      ? "message myMessage"
-                      : message.author === "Server"
-                      ? "message serverMessage"
-                      : "message normalMessage"
-                  }
-                >
-                  {message ? (
-                    <div className="username">
-                      {message.author !== this.state?.user?.name
-                        ? message.author
-                        : "You"}
-                    </div>
-                  ) : null}
-                  {message ? (
-                    <div className="messageText">{message.text}</div>
-                  ) : null}
-                </div>
+                />
               ))}
             </div>
             <div id="connectedUsers">
-              <ul>
-                {this.state?.connectedUsers
-                  ?.sort((user1, user2) =>
-                    user1.username.localeCompare(user2.username)
-                  )
-                  .map((connectedUser, idx) => (
-                    <li key={idx}>{connectedUser.username}</li>
-                  ))}
-              </ul>
+              <UserList connectedUsers={this.state?.connectedUsers} />
             </div>
           </div>
           <div id="chatInputTextarea">

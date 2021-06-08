@@ -1,0 +1,7 @@
+.User {
+  padding-left: 5px;
+}
+.User:hover {
+  background-color: lightgrey;
+  cursor: pointer;
+}

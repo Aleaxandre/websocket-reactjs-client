@@ -35,7 +35,6 @@
   flex-grow: 1;
   width: 75%;
   min-width: 50%;
-
   white-space: pre-wrap;
 }
 
@@ -58,49 +57,6 @@
   padding-left: 5px;
 }
 
-.Main #messageBox .myMessage {
-  background-color: snow;
-  bottom: 0;
-}
-.Main #messageBox .myMessage > span:first-of-type {
-  font-weight: bold;
-  color: lightseagreen;
-}
-
-.Main #messageBox .message {
-  display: flex;
-  border-bottom: 1px solid lightsteelblue;
-}
-
-.Main #messageBox .message div.username {
-  margin-right: 10px;
-  margin-top: auto;
-  margin-bottom: auto;
-  padding: 5px;
-}
-
-.Main #messageBox .message div.messageText {
-  flex-grow: 1;
-  margin-top: auto;
-  margin-bottom: auto;
-}
-
-.Main #messageBox .normalMessage {
-  background-color: paleturquoise;
-}
-.Main #messageBox .normalMessage .username {
-  color: mediumpurple;
-}
-
-.Main #messageBox .serverMessage {
-  background-color: teal;
-  color: whitesmoke;
-}
-.Main #messageBox .serverMessage .username {
-  color: chartreuse;
-}
-
 .Main #connectedUsers {
-  border-left: 1px solid lightslategray;
   flex-grow: 1;
 }

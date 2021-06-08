@@ -1,0 +1,44 @@
+/* .Message {
+} */
+
+.Message .myMessage {
+  background-color: snow;
+  bottom: 0;
+}
+.Message .myMessage > div:first-of-type {
+  font-weight: bold;
+  color: red;
+}
+
+.Message .message {
+  display: flex;
+  border-bottom: 1px solid lightsteelblue;
+}
+
+.Message .message div.username {
+  margin-right: 10px;
+  margin-top: auto;
+  margin-bottom: auto;
+  padding: 5px;
+}
+
+.Message .message div.messageText {
+  flex-grow: 1;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.Message .normalMessage {
+  background-color: paleturquoise;
+}
+.Message .normalMessage .username {
+  color: mediumpurple;
+}
+
+.Message .serverMessage {
+  background-color: teal;
+  color: whitesmoke;
+}
+.Message .serverMessage .username {
+  color: chartreuse;
+}
