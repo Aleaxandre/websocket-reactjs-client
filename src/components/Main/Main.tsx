@@ -4,7 +4,7 @@ import "./Main.css";
 import { io, Socket } from "socket.io-client";
 import { v4 as uuidv4 } from "uuid";
 import { ChatMessage } from "../Message/chat-message";
-import Message from "../Message/Message";
+import MessageBox from "../MessageBox/MessageBox";
 import { ChatUser } from "../User/chat-user";
 import UserList from "../UserList/UserList";
 
@@ -194,15 +194,10 @@ export default class Main extends React.Component<Props, ChatState> {
         </div>
         <div id="chatPanel">
           <div>
-            <div id="messageBox">
-              {this.state?.messageHistory?.map((message, idx) => (
-                <Message
-                  username={this.state?.user.name}
-                  message={message}
-                  key={idx}
-                />
-              ))}
-            </div>
+            <MessageBox
+              username={this.state?.user.name}
+              messages={this.state?.messageHistory}
+            />
             <div id="connectedUsers">
               <UserList connectedUsers={this.state?.connectedUsers} />
             </div>
@@ -217,11 +212,10 @@ export default class Main extends React.Component<Props, ChatState> {
                 onKeyDown={this.onEnterPress}
               />
               <button
+                className="sendButton"
                 type="submit"
                 disabled={this.state?.readyState !== ReadyState.OPEN}
-              >
-                Send
-              </button>
+              />
             </form>
           </div>
         </div>

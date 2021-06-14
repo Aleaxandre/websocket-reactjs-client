@@ -5,7 +5,7 @@ function App() {
   return (
     <div className="App">
       {/* <header> */}
-      <Main name={"My CHat"}></Main>
+      <Main name={"My Chat"}></Main>
       {/* </header> */}
     </div>
   );

@@ -29,15 +29,6 @@
   height: 100%;
 }
 
-.Main #messageBox {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  width: 75%;
-  min-width: 50%;
-  white-space: pre-wrap;
-}
-
 .Main #chatInputTextarea {
   width: 100%;
   bottom: 0;
@@ -55,8 +46,24 @@
   padding: 0;
   border: none;
   padding-left: 5px;
+  background-color: darkslategray;
+  color: whitesmoke;
 }
 
 .Main #connectedUsers {
   flex-grow: 1;
+}
+
+.Main .sendButton {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  background-image: url("../../svg/SendButton.svg");
+  background-repeat: round;
+  width: 30px;
+  background-color: darkslategray;
 }
